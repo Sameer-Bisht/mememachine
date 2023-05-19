@@ -10,7 +10,7 @@ function Navbar() {
     <div>
       <nav className= "navbar navbar-expand-lg navbar-dark bg-body-dark bg-dark">
   <div className= "container">
-  <Link className="navbar-brand" to="/"> <img src={Logo} alt="{}" height="50" className="d-inline-block align-text-top" /> </Link>
+  <Link className="navbar-brand" to="/"> <img src="https://raw.githubusercontent.com/Sameer-Bisht/mememachine/master/src/logo.png" alt="{}" height="50" className="d-inline-block align-text-top" /> </Link>
       
     <button className= "navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className= "navbar-toggler-icon"></span>
