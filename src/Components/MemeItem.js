@@ -6,7 +6,7 @@ export default class MemeItem extends Component {
     return (
       <div
         
-        className="card mx-5 my-5 mx-auto" style={{backgroundColor: "black", color: "white", border: "1px solid #c3c3c382",padding: "17px",borderRadius: "0px ",width:"23rem"
+        className="card mx-5 my-5 mx-auto" style={{backgroundColor: "black", color: "white", border: "1px solid #c3c3c382",padding: "17px",borderRadius: "0px ",width:"20rem"
         }}
       >
         <h5

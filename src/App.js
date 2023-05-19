@@ -9,7 +9,7 @@ export default class App extends Component {
       <Router>
         <Navbar></Navbar>
         <Routes>
-          <Route path="/" element= {<MemeBox key= "whsmeme" noOfMemes={10} subreddit="wholesomememes" />}></Route>
+          <Route path="/" element= {<MemeBox key= "whsmeme" noOfMemes={2} subreddit="wholesomememes" />}></Route>
           <Route path="/idm" element= {<MemeBox key= "idm" noOfMemes={10} subreddit="indiandankmemes" />}></Route>
           <Route path="/bbs" element= {<MemeBox key= "bbs" noOfMemes={10} subreddit="beastboyshub" />}></Route>
           <Route path="/dii" element= {<MemeBox key= "dii" noOfMemes={10} subreddit="DankinIndia" />}></Route>

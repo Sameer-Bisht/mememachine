@@ -1,23 +1,35 @@
 import React, { Component } from 'react'
 import MemeItem from "./MemeItem";
+import Spinner from './Spinner';
 
 export default class memeBox extends Component {
   constructor(){
     super();
     this.state = {meme:[],
+      loading:false,
+      loadingBottom:false,
+      loadMoreMemes:false
     }
   }
   async UpdateMeme(){
+    this.setState({loading:true})
     let url = `https://meme-api.com/gimme/${this.props.subreddit}/${this.props.noOfMemes}`
     let  data = await fetch(url);
     let  parsedData = await data.json();
-    this.setState({meme:parsedData.memes})
+    this.setState({meme:parsedData.memes,
+    loading:false})
+    
+  this.setState({loadMoreMemes:true})
 
   }
   
- loadMore= ()=>{
-    this.UpdateMeme()
-    window.scrollTo(0,0);
+ loadMore= async ()=>{
+  this.setState({loadingBottom:true})
+    let url = `https://meme-api.com/gimme/${this.props.subreddit}/${this.props.noOfMemes}`
+    let  data = await fetch(url);
+    let  parsedData = await data.json();
+    this.setState({meme:this.state.meme.concat(parsedData.memes),
+    loading:false,loadingBottom:false})
   }
 componentDidMount() { 
   document.body.style.backgroundColor = "black";
@@ -28,7 +40,7 @@ componentDidMount() {
   render() {
     return (
       <div className="container">
-        {/* <h1 className="heading" style={{color:"white"}}>{props.bodyHeading}</h1> */}
+        {this.state.loading &&  <Spinner/>}
         {this.state.meme.map((element) => {
           return (
             <div key={element.url}>
@@ -42,7 +54,8 @@ componentDidMount() {
               </div>
           );
         })}
-        <button onClick={this.loadMore} className="btn btn-danger " style={{margin:'32px'}}> Load More Memes...</button>
+        {this.state.loadingBottom && <Spinner/>}
+        {this.state.loadMoreMemes && <button onClick={this.loadMore} className="btn btn-danger " style={{margin:'20px auto',width:'200px',display:'block'}}> Load More Memes...</button>}
       </div>
     )
   }
